@@ -50,8 +50,12 @@ O gráfico e a tabela são montados automaticamente a partir do resultado da con
 - **Consulta no painel:** `app/Repositories/DashboardRepository.php`, método `meuIndicador()`
 - **Consulta validada no DBeaver:** [`docs/indicadores/I06_consulta.sql`](docs/indicadores/I06_consulta.sql)
 - **Plano do Encontro 10:** [`docs/indicadores/Plano_desenvolvimento_I06_Encontro10.md`](docs/indicadores/Plano_desenvolvimento_I06_Encontro10.md)
+- **AEP do 2º bimestre:** [modelagem, UML, plano de testes e roteiro do pitch](docs/AEP_2Bimestre/index.html)
+- **Protótipo navegável:** [jornada de cadastro à vistoria e relatório](docs/AEP_2Bimestre/prototipo_navegavel.html)
 
 A consulta considera itens `nao_conforme` em vistorias `finalizada` ou `sincronizada`, agrupa por estabelecimento e ordena pelos totais, depois pelos itens críticos e pela razão social. O banco é `saudetech` e o schema real é `public`; configure `DB_SCHEMA=public` no `.env`.
+
+Os documentos da AEP são uma proposta acadêmica para o I06 e incluem diagrama de classes UML, casos de teste válidos/inválidos/limítrofes, protótipo navegável e roteiro de pitch de até cinco minutos. Pesos, faixas e exemplos do checklist precisam de validação pelo gestor da VISA antes de qualquer uso operacional. Substitua no documento os campos de integrantes/RA e incorpore o feedback real do 1º bimestre, se disponível.
 
 ---
 
