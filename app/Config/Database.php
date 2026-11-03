@@ -14,8 +14,8 @@ use PDOException;
  * Mudanças em relação ao nutrihealth (MySQL):
  *   - DSN "pgsql:" em vez de "mysql:" e porta padrão 5432
  *   - sslmode (o Render exige SSL em conexões externas)
- *   - search_path apontando para o schema "saudetech", para que as consultas
- *     possam usar só o nome da tabela (vistorias, usuarios...)
+ *   - search_path apontando por padrão para o schema "public", usado pelo banco atual,
+ *     para que as consultas possam usar só o nome da tabela (vistorias, usuarios...)
  *   - conexão única compartilhada por requisição (singleton)
  */
 class Database
@@ -38,7 +38,7 @@ class Database
         $this->user    = Env::get('DB_USER', 'postgres');
         $this->pass    = Env::get('DB_PASS', '');
         $this->sslmode = Env::get('DB_SSLMODE', 'prefer');
-        $this->schema  = Env::get('DB_SCHEMA', 'saudetech');
+        $this->schema  = Env::get('DB_SCHEMA', 'public');
 
         $url = Env::get('DATABASE_URL');
         if ($url) {
@@ -96,7 +96,7 @@ class Database
             ]);
 
             // Nome do schema validado para evitar injeção (só letras, números e _)
-            $schema = preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $this->schema) ? $this->schema : 'saudetech';
+            $schema = preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $this->schema) ? $this->schema : 'public';
             $pdo->exec("SET search_path TO {$schema}, public");
             $pdo->exec("SET TIME ZONE 'America/Sao_Paulo'");
             $pdo->exec("SET client_encoding TO 'UTF8'");

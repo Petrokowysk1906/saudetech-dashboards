@@ -42,14 +42,16 @@ O gráfico e a tabela são montados automaticamente a partir do resultado da con
 
 ---
 
-## 📊 Meu indicador
+## 📊 Meu indicador — Grupo I06
 
-> Aluno: preencha esta seção no seu branch.
+- **Indicador:** I06 — Estabelecimentos com mais não conformidades
+- **Pergunta que responde:** Quais são os 10 estabelecimentos com mais não conformidades?
+- **Tipo de gráfico:** barras horizontais, com quantidade de não conformidades e itens críticos
+- **Consulta no painel:** `app/Repositories/DashboardRepository.php`, método `meuIndicador()`
+- **Consulta validada no DBeaver:** [`docs/indicadores/I06_consulta.sql`](docs/indicadores/I06_consulta.sql)
+- **Plano do Encontro 10:** [`docs/indicadores/Plano_desenvolvimento_I06_Encontro10.md`](docs/indicadores/Plano_desenvolvimento_I06_Encontro10.md)
 
-- **Aluno(a):** _nome e RA_
-- **Indicador:** _ex.: I03 — Vistorias por tipo de estabelecimento_
-- **Pergunta que responde:** _..._
-- **Tipo de gráfico:** _..._
+A consulta considera itens `nao_conforme` em vistorias `finalizada` ou `sincronizada`, agrupa por estabelecimento e ordena pelos totais, depois pelos itens críticos e pela razão social. O banco é `saudetech` e o schema real é `public`; configure `DB_SCHEMA=public` no `.env`.
 
 ---
 

@@ -55,14 +55,31 @@ class DashboardRepository
     // (I01 a I12 do roteiro SQL), exatamente como ela funcionou no DBeaver.
     // Regras:
     //   - só SELECT;
-    //   - NÃO precisa do "SET search_path" (a conexão já usa o schema saudetech);
+    //   - NÃO precisa do "SET search_path" (a conexão usa o schema configurado em DB_SCHEMA);
+    //   - banco do laboratório: saudetech; schema atual: public;
     //   - não deixe ";" no final da consulta.
     // =========================================================================
     public function meuIndicador(): array
     {
         return $this->consultar("
-            SELECT 'Substitua esta consulta' AS rotulo,
-                   0                         AS valor
+            SELECT e.razao_social AS razao_social,
+                   e.bairro AS bairro,
+                   COUNT(*) AS nao_conformidades,
+                   COUNT(*) FILTER (
+                       WHERE iv.severidade::text = 'critico'
+                   ) AS criticas
+              FROM public.estabelecimentos e
+              JOIN public.vistorias v
+                ON v.estabelecimento_id = e.id
+              JOIN public.itens_vistoria iv
+                ON iv.vistoria_id = v.id
+             WHERE v.status::text IN ('finalizada', 'sincronizada')
+               AND iv.status::text = 'nao_conforme'
+             GROUP BY e.id, e.razao_social, e.bairro
+             ORDER BY nao_conformidades DESC,
+                      criticas DESC,
+                      e.razao_social ASC
+             LIMIT 10
         ");
     }
 }
