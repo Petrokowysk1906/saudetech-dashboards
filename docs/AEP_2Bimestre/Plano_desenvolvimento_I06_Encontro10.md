@@ -7,7 +7,7 @@
 - **Repositório-base:** https://github.com/edenilsonburity/saudetech-dashboards
 - **Fork do grupo:** criar na conta do grupo/aluno antes da Sprint 1
 - **Branch:** `feature/dashboard-I06`
-**Integrantes:** preencher os cinco nomes e RAs; a atribuição provisória abaixo usa Integrantes 1–5.
+**Integrantes:** Arthur Luiz Oliveira da Rosa; Alysson Lino dos Santos; Eduardo Cesar Souza; Lenin Petrokowysk da Cunha; Maria Fernanda Mayumi Alves de Oliveira.
 
 > Este plano acompanha o Encontro 10. A conexão PostgreSQL no Render foi configurada no DBeaver como banco `saudetech`, schema `public`, porta 5432, SSL `require` e somente leitura. O schema `public` contém as tabelas reais do projeto.
 
@@ -16,7 +16,7 @@
 | Campo | Definição |
 |---|---|
 | Grupo | I06 |
-| Integrantes | Integrantes 1–5 — substituir por nome e RA |
+| Integrantes | Arthur Luiz Oliveira da Rosa; Alysson Lino dos Santos; Eduardo Cesar Souza; Lenin Petrokowysk da Cunha; Maria Fernanda Mayumi Alves de Oliveira |
 | Indicador | I06 — estabelecimentos com mais não conformidades |
 | Pergunta | Quais são os 10 estabelecimentos com mais não conformidades? |
 | Gráfico | Barras horizontais (ranking), com tabela contendo bairro e quantidade de itens críticos |
@@ -26,17 +26,19 @@
 
 **Saída esperada da consulta:** `razao_social`, `bairro`, `nao_conformidades`, `criticas`, nessa ordem. Contam-se apenas vistorias finalizadas ou sincronizadas e itens com status `nao_conforme`.
 
+**Informação complementar no cartão local:** total de vistorias finalizadas ou sincronizadas por estabelecimento (`vistorias`). O arquivo SQL de entrega mantém as quatro colunas exigidas no roteiro do professor.
+
 ## 2. EAP simplificada e tarefas
 
 | Código | Pacote | Tarefas, responsável e prazo | Entregável | Prioridade |
 |---|---|---|---|---|
-| 1 | Preparação | 1.1 Criar fork, clonar e criar branch — Integrante 1 — 03/11; 1.2 Subir ambiente Docker — Integrante 1 — 03/11; 1.3 Configurar e testar conexão PostgreSQL/SSL em modo somente leitura — Integrante 2 — 04/11 | Painel local acessível e conexão alvo confirmada | Deve |
-| 2 | Dados | 2.1 Ajustar consulta I06 às colunas reais — Integrante 2 — 04/11; 2.2 Executar consulta no DBeaver em somente leitura — Integrante 2 — 04/11; 2.3 Tratar empate, resultado vazio e filtro de status — Integrante 5 — 05/11 | `grupo_I06_consulta.sql` validada no DBeaver | Deve |
-| 3 | Interface | 3.1 Definir título e pergunta do cartão — Integrante 3 — 05/11; 3.2 Configurar barras horizontais — Integrante 3 — 06/11; 3.3 Revisar legenda, rótulos e tema claro/escuro — Integrante 4 — 06/11 | Indicador exibido no Dashboard | Deve (cartão); Deveria (acabamento) |
-| 4 | Qualidade | 4.1 Conferir ranking, empates, filtro e dados vazios — Integrante 5 — 07/11; 4.2 Revisão de SQL, tela e README por todo o grupo — Integrante 4 — 08/11 | Checklist de revisão preenchido | Deveria |
-| 5 | Entrega | 5.1 Commits convencionais — Integrante 1 — 08/11; 5.2 Criar tag `v1.1.0` — Integrante 1 — 09/11; 5.3 Abrir Pull Request para o repositório do professor — Integrante 1 — 09/11 | Pull Request e tag publicados | Deve |
+| 1 | Preparação | 1.1 Criar fork, clonar e criar branch — Arthur Luiz Oliveira da Rosa — 03/11; 1.2 Subir ambiente Docker — Arthur Luiz Oliveira da Rosa — 03/11; 1.3 Configurar e testar conexão PostgreSQL/SSL em modo somente leitura — Alysson Lino dos Santos — 04/11 | Painel local acessível e conexão alvo confirmada | Deve |
+| 2 | Dados | 2.1 Ajustar consulta I06 às colunas reais — Alysson Lino dos Santos — 04/11; 2.2 Executar consulta no DBeaver em somente leitura — Alysson Lino dos Santos — 04/11; 2.3 Tratar empate, resultado vazio e filtro de status — Maria Fernanda Mayumi Alves de Oliveira — 05/11 | `grupo_I06_consulta.sql` validada no DBeaver | Deve |
+| 3 | Interface | 3.1 Definir título e pergunta do cartão — Eduardo Cesar Souza — 05/11; 3.2 Configurar barras horizontais — Eduardo Cesar Souza — 06/11; 3.3 Revisar legenda, rótulos e tema claro/escuro — Lenin Petrokowysk da Cunha — 06/11 | Indicador exibido no Dashboard | Deve (cartão); Deveria (acabamento) |
+| 4 | Qualidade | 4.1 Conferir ranking, empates, filtro e dados vazios — Maria Fernanda Mayumi Alves de Oliveira — 07/11; 4.2 Revisão de SQL, tela e README por todo o grupo — Lenin Petrokowysk da Cunha — 08/11 | Checklist de revisão preenchido | Deveria |
+| 5 | Entrega | 5.1 Commits convencionais — Arthur Luiz Oliveira da Rosa — 08/11; 5.2 Criar tag `v1.1.0` — Arthur Luiz Oliveira da Rosa — 09/11; 5.3 Abrir Pull Request para o repositório do professor — Arthur Luiz Oliveira da Rosa — 09/11 | Pull Request e tag publicados | Deve |
 
-**Distribuição de código:** Integrante 1 trabalha na configuração do projeto e entrega; Integrante 2 na consulta e validação SQL; Integrante 3 no cartão e gráfico; Integrante 4 no refinamento da interface/README; Integrante 5 nos casos-limite da consulta e filtros. Substituir cada número pelo membro real e RA. Cada integrante deve manter ao menos uma tarefa de código, conforme o Encontro 10.
+**Distribuição de código:** Arthur Luiz Oliveira da Rosa trabalha na configuração do projeto e entrega; Alysson Lino dos Santos na consulta e validação SQL; Eduardo Cesar Souza no cartão e gráfico; Lenin Petrokowysk da Cunha no refinamento da interface/README; Maria Fernanda Mayumi Alves de Oliveira nos casos-limite da consulta e filtros. A atribuição segue a ordem dos nomes informados pelo grupo; todos mantêm ao menos uma tarefa de código, conforme o Encontro 10.
 
 ## 3. Cronograma das Sprints
 
@@ -52,13 +54,13 @@
 
 | Tarefa | Responsável (R) | Apoio (A) | Prazo |
 |---|---|---|---|
-| Preparação e fork | Integrante 1 — nome/RA pendente | Integrante 2 | 03/11 |
-| Conexão e consulta SQL | Integrante 2 — nome/RA pendente | Integrante 5 | 04/11 |
-| Cartão e gráfico | Integrante 3 — nome/RA pendente | Integrante 4 | 06/11 |
-| Testes de borda e revisão | Integrante 5 — nome/RA pendente | Integrante 4 | 08/11 |
-| Commits, tag, PR e documentação | Integrante 1 — nome/RA pendente | Todo o grupo | 09/11 |
+| Preparação e fork | Arthur Luiz Oliveira da Rosa | Alysson Lino dos Santos | 03/11 |
+| Conexão e consulta SQL | Alysson Lino dos Santos | Maria Fernanda Mayumi Alves de Oliveira | 04/11 |
+| Cartão e gráfico | Eduardo Cesar Souza | Lenin Petrokowysk da Cunha | 06/11 |
+| Testes de borda e revisão | Maria Fernanda Mayumi Alves de Oliveira | Lenin Petrokowysk da Cunha | 08/11 |
+| Commits, tag, PR e documentação | Arthur Luiz Oliveira da Rosa | Todo o grupo | 09/11 |
 
-**Papéis:** Integrante 1 — coordenação/integração; Integrante 2 — dados e DBeaver; Integrante 3 — interface; Integrante 4 — documentação e revisão visual; Integrante 5 — qualidade e casos-limite. Confirmar divisão com o grupo e substituir placeholders antes de publicar o plano.
+**Papéis:** Arthur Luiz Oliveira da Rosa — coordenação/integração; Alysson Lino dos Santos — dados e DBeaver; Eduardo Cesar Souza — interface; Lenin Petrokowysk da Cunha — documentação e revisão visual; Maria Fernanda Mayumi Alves de Oliveira — qualidade e casos-limite. A divisão segue a ordem da lista enviada pelo grupo.
 
 ## 5. Prioridades (MoSCoW)
 

@@ -53,9 +53,9 @@ O gráfico e a tabela são montados automaticamente a partir do resultado da con
 - **AEP do 2º bimestre:** [modelagem, UML, plano de testes e roteiro do pitch](docs/AEP_2Bimestre/index.html)
 - **Protótipo navegável:** [jornada de cadastro à vistoria e relatório](docs/AEP_2Bimestre/prototipo_navegavel.html)
 
-A consulta considera itens `nao_conforme` em vistorias `finalizada` ou `sincronizada`, agrupa por estabelecimento e ordena pelos totais, depois pelos itens críticos e pela razão social. O banco é `saudetech` e o schema real é `public`; configure `DB_SCHEMA=public` no `.env`.
+A consulta oficial I06 considera itens `nao_conforme` em vistorias `finalizada` ou `sincronizada`, agrupa por estabelecimento e ordena pelos totais, depois pelos itens críticos e pela razão social. No cartão do Dashboard, a consulta também mostra o total de vistorias finalizadas ou sincronizadas por estabelecimento como informação complementar. O banco é `saudetech` e o schema usado localmente é `public`; configure `DB_SCHEMA=public` no `.env`.
 
-Os documentos da AEP são uma proposta acadêmica para o I06 e incluem diagrama de classes UML, casos de teste válidos/inválidos/limítrofes, protótipo navegável e roteiro de pitch de até cinco minutos. Pesos, faixas e exemplos do checklist precisam de validação pelo gestor da VISA antes de qualquer uso operacional. Substitua no documento os campos de integrantes/RA e incorpore o feedback real do 1º bimestre, se disponível.
+Os documentos da AEP são uma proposta acadêmica para o I06 e incluem diagrama de classes UML, casos de teste válidos/inválidos/limítrofes, protótipo navegável e roteiro de pitch de até cinco minutos. Pesos, faixas e exemplos do checklist precisam de validação pelo gestor da VISA antes de qualquer uso operacional. O documento identifica os cinco integrantes informados pelo grupo; RA não foi incluído a pedido do grupo. O feedback real do 1º bimestre ainda deve ser incorporado, se disponível.
 
 ---
 
