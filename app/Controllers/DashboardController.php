@@ -11,6 +11,21 @@ use PDOException;
  */
 class DashboardController extends Controller
 {
+    /** Retorna o ranking I06 do banco para o protótipo acadêmico local. */
+    public function indicadorI06(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+        header('Cache-Control: no-store, private');
+
+        try {
+            $repo = new DashboardRepository($this->pdo);
+            echo json_encode($repo->meuIndicador(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+        } catch (PDOException $e) {
+            http_response_code(503);
+            echo json_encode(['erro' => 'Não foi possível carregar o indicador I06.'], JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function index(): void
     {
         $repo = new DashboardRepository($this->pdo);

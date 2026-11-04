@@ -62,22 +62,33 @@ class DashboardRepository
     public function meuIndicador(): array
     {
         return $this->consultar("
+            WITH dados_i06 AS (
+                SELECT v.estabelecimento_id,
+                       COUNT(iv.id) FILTER (
+                           WHERE iv.status::text = 'nao_conforme'
+                       ) AS nao_conformidades,
+                       COUNT(iv.id) FILTER (
+                           WHERE iv.status::text = 'nao_conforme'
+                             AND iv.severidade::text = 'critico'
+                       ) AS criticas,
+                       COUNT(DISTINCT v.id) AS vistorias
+                  FROM public.vistorias v
+                  LEFT JOIN public.itens_vistoria iv
+                    ON iv.vistoria_id = v.id
+                 WHERE v.status::text IN ('finalizada', 'sincronizada')
+                 GROUP BY v.estabelecimento_id
+            )
             SELECT e.razao_social AS razao_social,
                    e.bairro AS bairro,
-                   COUNT(*) AS nao_conformidades,
-                   COUNT(*) FILTER (
-                       WHERE iv.severidade::text = 'critico'
-                   ) AS criticas
-              FROM public.estabelecimentos e
-              JOIN public.vistorias v
-                ON v.estabelecimento_id = e.id
-              JOIN public.itens_vistoria iv
-                ON iv.vistoria_id = v.id
-             WHERE v.status::text IN ('finalizada', 'sincronizada')
-               AND iv.status::text = 'nao_conforme'
-             GROUP BY e.id, e.razao_social, e.bairro
-             ORDER BY nao_conformidades DESC,
-                      criticas DESC,
+                   d.nao_conformidades,
+                   d.criticas,
+                   d.vistorias
+              FROM dados_i06 d
+              JOIN public.estabelecimentos e
+                ON e.id = d.estabelecimento_id
+             WHERE d.nao_conformidades > 0
+             ORDER BY d.nao_conformidades DESC,
+                      d.criticas DESC,
                       e.razao_social ASC
              LIMIT 10
         ");
